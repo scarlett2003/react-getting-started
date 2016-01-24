@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "browser-sync start --server --files *.*"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/scarlett2003/react-getting-started/issues"
   },
-  "homepage": "https://github.com/scarlett2003/react-getting-started#readme"
+  "homepage": "https://github.com/scarlett2003/react-getting-started#readme",
+  "devDependencies": {
+    "browser-sync": "^2.11.1"
+  }
 }
