@@ -1,12 +1,37 @@
-class HelloWorld extends React.Component {
+class CommentForm extends React.Component {
 	render() {
-		return (
-			<h1>Hello World!!</h1>
+		return(
+			<div className="comment-form">
+				CommentForm
+			</div>
 		);
 	}
 }
 
-React.render(
-	<HelloWorld />,
+class CommentList extends React.Component {
+	render() {
+		return(
+			<div className="comment-list">
+				CommentList
+			</div>
+		);
+	}
+}
+
+class CommentBox extends React.Component {
+
+	render() {
+		return (
+			<div className="comment-box">
+				<h1>Comments</h1>
+				<CommentList />
+				<CommentForm />
+			</div>
+		);
+	}
+}
+
+count = React.render(
+	<CommentBox />,
 	document.getElementById('content')
 );
