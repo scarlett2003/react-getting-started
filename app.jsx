@@ -23,23 +23,23 @@ class CommentForm extends React.Component {
 	}
 }
 
+
 class CommentList extends React.Component {
 	render() {
+		var commentsNode = this.props.comments.map(function(comment, index){
+			return <Comment key={'comment-' + index} author={comment.author}>{comment.body}</Comment>
+		});
 		return(
 			<div className="comment-list">
-				<Comment author="jovi">
-					This is my comment.
-				</Comment>
-				<Comment author="leon">
-					This is my comment2.
-				</Comment>
-				<Comment author="jenny">
-					This is my comment3.
-				</Comment>
+				{commentsNode}
 			</div>
 		);
 	}
 }
+var comments = [
+	{author: "Jovi lee", body: "this is my comment"},
+	{author: "Nicole wu", body: "this is my comment2"}
+];
 
 class CommentBox extends React.Component {
 
@@ -47,14 +47,14 @@ class CommentBox extends React.Component {
 		return (
 			<div className="comment-box">
 				<h1>Comments</h1>
-				<CommentList />
+				<CommentList comments={comments} />
 				<CommentForm />
 			</div>
 		);
 	}
 }
 
-count = React.render(
+React.render(
 	<CommentBox />,
 	document.getElementById('content')
 );
