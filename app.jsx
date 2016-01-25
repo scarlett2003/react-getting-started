@@ -36,21 +36,33 @@ class CommentList extends React.Component {
 		);
 	}
 }
-var comments = [
-	{author: "Jovi lee", body: "this is my comment1"}
-];
-var other = [
-	{author: "Jovi lee", body: "this is my comment1"},
-	{author: "Nicole wu", body: "this is my comment2"}
-];
+
 
 class CommentBox extends React.Component {
 	
 	constructor(props) {
 		super();
 		this.state = {
-			comments: props.comments
+			comments: props.comments || []
 		}
+	}
+	
+	loadDataFromServer() {
+		$.ajax({
+			url: this.props.url,
+			dataType: "json",
+			success: comments => {
+				this.setState({comments: comments});
+			},
+			error: (xhr, status, err) => {
+				console.log(err.toString());
+			}
+		});
+	}
+
+
+	componentDidMount() {
+		this.loadDataFromServer();
 	}
 
 	render() {
@@ -65,6 +77,6 @@ class CommentBox extends React.Component {
 }
 
 box = React.render(
-	<CommentBox comments={other} />,
+	<CommentBox url="comments.json" />,
 	document.getElementById('content')
 );
